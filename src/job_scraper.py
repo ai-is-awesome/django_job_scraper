@@ -160,12 +160,13 @@ class IndeedJobScraper(Request):
     
     
     
-    def save_to_excel(self,):
+    def save_to_excel(self, path = None):
+
         json = self.get_job_details()
         instance = IOOperations(json)
         data = instance.json_to_list()
         instance.add_rows(data)
-        instance.save()
+        instance.save(path)
 
 
 
@@ -223,8 +224,14 @@ class IOOperations:
         for arr in arr_2d:
             self.add_row(arr)
         
-    def save(self):
-        self.wb.save('test.xls')
+    def save(self, path = None):
+        if path == None:
+            self.wb.save('test.xls')
+
+        else:
+            self.wb.save(path)
+
+
         
         
     def json_to_list(self,):
