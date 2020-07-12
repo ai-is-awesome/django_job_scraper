@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 import xlwt
 from xlwt import Workbook
-
+from indeed_global_urls import countries_to_urls
 
 def get_indeed_url(country):
     pass
@@ -13,14 +13,15 @@ def get_indeed_url(country):
 
 
 class IndeedQueryManager:
-    origin_url = 'https://www.indeed.in/'
-
+    #origin_url = 'https://www.indeed.in/'
+    
 
     def __init__(self, query = '', city = '', country = 'India', num_pages = 1):
         self.query = query
         self.country = country
         self.city = city
         self.num_pages = num_pages
+        self.origin_url = countries_to_urls[self.country]
 
 
 
