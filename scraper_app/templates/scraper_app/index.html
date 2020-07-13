@@ -5,7 +5,7 @@
 
 <form action = "{% url 'scrape_url' %}" method = "get">
 
-{{ form }}
+{{ form.as_p }}
 
 <input type="submit" value="Download">
 

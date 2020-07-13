@@ -1,9 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
-
+import time
 import xlwt
 from xlwt import Workbook
-from indeed_global_urls import countries_to_urls
+from src.indeed_global_urls import countries_to_urls
+
+
 
 def get_indeed_url(country):
     pass
@@ -30,7 +32,8 @@ class IndeedQueryManager:
         urls = list()
 
         for i in range(self.num_pages):
-            url = f'https://www.indeed.co.in/jobs?q={self.query}&start={start}&l={self.city}'
+            url = self.origin_url + f'jobs?q={self.query}&start={start}&l={self.city}'
+            #url = f'https://www.indeed.co.in/jobs?q={self.query}&start={start}&l={self.city}'
             urls.append(url)
             start += 10
 
@@ -90,7 +93,7 @@ class Request(object):
         resp = session.post(data = data)
         return resp
 
-
+#----------------------------------------------------------------------------------
 
 
 class IndeedJobScraper(Request):
@@ -154,13 +157,14 @@ class IndeedJobScraper(Request):
             soup = self.get_soup(url)
             for job_detail in soup.find_all('div', class_ = card_class):
                 jobs_list.append(self.get_details_from_job_container(job_detail))
-                
+
+                #Adding sleep
+                time.sleep(0.5)
             
         return jobs_list
             
     
-    
-    
+
     def save_to_excel(self, path = None):
 
         json = self.get_job_details()
@@ -243,8 +247,8 @@ class IOOperations:
             return [dictionary[key] for key in self.key_order]
         
         
-        for d in self.json:
-            data.append(dict_to_list(d))
+        for dic in self.json:
+            data.append(dict_to_list(dic))
         
         
         return data
