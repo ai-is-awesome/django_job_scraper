@@ -73,6 +73,10 @@ class Request(object):
 
 
 
+
+
+
+
     def get(self, url):
         session = requests.session()
         resp = session.get(url, headers = self.headers)
@@ -149,7 +153,7 @@ class IndeedJobScraper(Request):
         
 
 
-    def get_job_details(self,):    
+    def get_job_details(self,):
         urls_list = self.query.get_urls_from_query()
         jobs_list = []
         card_class = 'jobsearch-SerpJobCard unifiedRow row result'
@@ -160,10 +164,9 @@ class IndeedJobScraper(Request):
 
                 #Adding sleep
                 time.sleep(0.5)
-            
-        return jobs_list
-            
-    
+
+        return jobs_list            
+
 
     def save_to_excel(self, path = None):
 
@@ -200,8 +203,8 @@ class IOOperations:
         self.json = json
         self.key_order = ['title', 'company', 'salary', 'location', 'description']
         self.current_row = 1
-    
-    
+   
+   
     
     def json_to_excel(self, json):
         pass
@@ -237,19 +240,19 @@ class IOOperations:
             self.wb.save(path)
 
 
-        
-        
+       
+       
     def json_to_list(self,):
-        
+       
         data = []
-        
+       
         def dict_to_list(dictionary):
             return [dictionary[key] for key in self.key_order]
-        
-        
+       
+       
         for dic in self.json:
             data.append(dict_to_list(dic))
-        
+       
         
         return data
-            
+           

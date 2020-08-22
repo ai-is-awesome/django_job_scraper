@@ -57,6 +57,7 @@ countries_to_urls = {'Argentina': 'https://ar.indeed.com/',
  'Ukraine': 'https://ua.indeed.com/',
  'United Arab Emirates': 'https://www.indeed.ae/',
  'United Kingdom': 'https://www.indeed.co.uk/',
+'United States' : 'https://www.indeed.com',
  'Uruguay': 'https://uy.indeed.com/',
  'Venezuela': 'https://ve.indeed.com/',
  'Vietnam': 'https://vn.indeed.com/'}
