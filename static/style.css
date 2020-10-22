@@ -1,0 +1,21 @@
+body {
+	margin: 0px;
+	padding: 0px;
+
+}
+
+
+.header {
+	background-color: lightgreen;
+	color: white;
+	text-align: center;
+	padding-bottom: 25px;
+}
+
+
+.search-card {
+	width: 70%;
+	text-align: center;
+	margin: auto;
+	padding: 20px;
+}

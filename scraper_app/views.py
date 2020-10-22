@@ -54,16 +54,19 @@ def scrape(request):
             num_pages = form.cleaned_data['num_pages']
             country = form.cleaned_data['country']
 
+    # response = HttpResponse(content_type = 'application/ms-excel')
+    # response['Content-Disposition'] = 'attachment; filename="Jobs.xls"'
 
-
-
-    response = HttpResponse(content_type = 'application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="Jobs.xls"'
+    # query_manager = IndeedQueryManager(query = query, city = city, num_pages = num_pages, country = country)
+    # scraper =  IndeedJobScraper(query_manager)
+    # scraper.save_to_excel(response)
 
     query_manager = IndeedQueryManager(query = query, city = city, num_pages = num_pages, country = country)
     scraper =  IndeedJobScraper(query_manager)
-    scraper.save_to_excel(response)
-    return response
+
+    details= scraper.get_job_details()
+
+    return render(request, 'scraper_app/scrape.html', {'details' : details})
 
     
 

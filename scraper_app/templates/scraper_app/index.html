@@ -1,8 +1,27 @@
-<h1>Welcom to our home page!</h1>
+{% extends 'scraper_app/base.html' %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% block title %}Welcome to Indeed Job Scraper % {% endblock title %}
+</head>
+<body>
+{% block content %}
+
+
+<div class = "jumbotron bgcolor-success header">
+
+	<h1>Indeed Job Scraper</h1>
+
+</div>
 
 
 
 
+
+<div class = "card search-card">
 <form action = "{% url 'scrape_url' %}" method = "get">
 
 {{ form.as_p }}
@@ -10,5 +29,7 @@
 <input type="submit" value="Download">
 
 </form>
-
-
+</div>
+{% endblock content %}
+</body>
+</html>
